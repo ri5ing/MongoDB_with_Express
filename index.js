@@ -89,6 +89,14 @@ app.put("/chats/:id", async(req,res)=>{
     }
 });
 
+//Destroy Route
+app.delete("/chats/:id",async (req,res)=>{
+    let{id}=req.params;
+    let deleteChat = await Chat.findByIdAndDelete(id);
+    console.log;(deleteChat);
+    res.redirect("/chats");
+});
+
 app.get ("/" , (req,res) =>  {
     res.send("root is working");
 })

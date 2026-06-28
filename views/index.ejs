@@ -11,20 +11,26 @@
     <form>
         <button>New Chat</button>
     </form>
-   <% for(let chat of chats) { %>
+    
+    <% for(let chat of chats) { %>
     <div class="chat">
-        <p>from : <i> <%= chat.from%></p>
+        <p>from : <i> <%= chat.from%></i></p>
         <div class ="msg">
              <p><%= chat.msg%></p>
              <form method="GET"  action="/chats/<%= chat._id %>/edit">
              <button>Edit</button>
+             </form>
+             <br>
+             <form method="POST"  action="/chats/<%= chat._id %>?_method=DELETE">
+             <button>Delete</button>
+             </form>
         </div>
-        <p>rec : <i> <%= chat.to%></p>
+        <p>rec : <i> <%= chat.to%></i></p>
         <hr/>
         <p><%= chat.created_at.toString().split(" ")[4]%></p>
-         <p><%= chat.created_at.toString().split(" ").slice(0,4).join(" ")%></p>
+        <p><%= chat.created_at.toString().split(" ").slice(0,4).join(" ")%></p>
     </div>
     <br><br>
-<% } %>
+    <% } %>
 </body>
 </html>
